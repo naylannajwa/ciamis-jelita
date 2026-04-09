@@ -1,0 +1,8 @@
+{
+  "name": "Ciamis Jelita",
+  "description": "A comprehensive tourism companion for Ciamis, featuring AI-powered trip planning, gamified missions, real-time news, and culinary guides.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
