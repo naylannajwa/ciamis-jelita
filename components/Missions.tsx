@@ -99,7 +99,7 @@ const Missions: React.FC<MissionsProps> = ({ onOpenScanner, onViewDetail, onOpen
             <div className="relative z-10">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-bold text-lg">Misi Bulan Ini</h3>
-                <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">2024</span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">2026</span>
               </div>
               <div className="flex items-end gap-2 mb-2">
                 <span className="text-4xl font-extrabold">1/4</span>

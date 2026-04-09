@@ -93,7 +93,7 @@ const AdminBerita: React.FC = () => {
                     <option value="Lomba">Lomba</option>
                   </select>
                 </div>
-                <div><label className="text-xs font-bold text-gray-500 uppercase">Tanggal</label><input required className="w-full border rounded-lg px-4 py-2" placeholder="Contoh: 12 Jan 2024" value={formData.date || ''} onChange={e => setFormData({...formData, date: e.target.value})} /></div>
+                <div><label className="text-xs font-bold text-gray-500 uppercase">Tanggal</label><input required className="w-full border rounded-lg px-4 py-2" placeholder="Contoh: 12 Jan 2026" value={formData.date || ''} onChange={e => setFormData({...formData, date: e.target.value})} /></div>
               </div>
               <div><label className="text-xs font-bold text-gray-500 uppercase">Ringkasan</label><textarea required className="w-full border rounded-lg px-4 py-2 h-24" value={formData.summary || ''} onChange={e => setFormData({...formData, summary: e.target.value})} /></div>
               <div><label className="text-xs font-bold text-gray-500 uppercase">URL Gambar</label><input required type="url" className="w-full border rounded-lg px-4 py-2" value={formData.imageUrl || ''} onChange={e => setFormData({...formData, imageUrl: e.target.value})} /></div>
