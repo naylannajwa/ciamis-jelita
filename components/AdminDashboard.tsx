@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../services/firebase';
-import { collection } from 'firebase/firestore';
 import AdminWisata from './AdminWisata';
 import AdminBerita from './AdminBerita';
 import AdminKuliner from './AdminKuliner';
