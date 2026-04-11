@@ -12,7 +12,11 @@ const AIChat: React.FC<AIChatProps> = ({ onBack }) => {
     {
       id: '1',
       role: 'model',
-      text: 'Halo! 👋 Selamat datang di **Ciamis**. Saya asisten cerdas Anda. Ada yang bisa saya bantu rencanakan hari ini? ✨',
+      text: `Halo Explorer! Wilujeng sumping! 👋 <br> Saya **Jelita**, asisten wisata Anda di **Ciamis Jelita** yang siap membantu menjelajahi keindahan Kabupaten Ciamis. 🗺️✨
+
+            Di sini, Anda bisa menemukan berbagai destinasi wisata menarik, kuliner khas, hingga event seru yang sedang berlangsung. <br> Jangan lupa, setiap kunjungan bisa memberi Anda XP dan Stempel Digital dengan scan QR di lokasi! 🚀
+
+            Mau mulai dari wisata alam, kuliner, atau butuh bantuan menggunakan aplikasinya? Saya siap membantu 😊✨`,
       timestamp: new Date()
     }
   ]);
@@ -20,11 +24,48 @@ const AIChat: React.FC<AIChatProps> = ({ onBack }) => {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Kumpulan template prompt yang dikategorikan
+  const WISATA_PROMPTS = [
+    'Rekomendasi tempat wisata alam di Ciamis 🌲',
+    'Apa saja makanan khas Ciamis yang wajib dicoba? 🍲',
+    'Rekomendasi oleh-oleh khas Ciamis untuk dibawa pulang 🛍️',
+    'Ada event atau festival budaya apa bulan ini? 📅',
+    'Ceritakan sejarah singkat tentang Kabupaten Ciamis 🏛️',
+    'Rekomendasi tempat wisata yang ramah keluarga 👨‍👩‍👧‍👦',
+  ];
+  const ITINERARY_PROMPTS = [
+    'Buatkan itinerary wisata 1 hari di Ciamis 🗺️',
+    'Rekomendasi rute liburan akhir pekan di Ciamis 🚗',
+  ];
+  const APP_PROMPTS = [
+    'Bagaimana cara mengumpulkan XP di aplikasi ini? ⭐',
+    'Bagaimana cara melakukan scan QR code misi? 📷',
+    'Bagaimana cara mengecek peringkat saya di aplikasi ini? 🎁',
+  ];
+  const [randomPrompts, setRandomPrompts] = useState<string[]>([]);
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
     }
   }, [messages, loading]);
+
+  // Mengacak prompt saat komponen dimuat
+  useEffect(() => {
+    const shuffledWisata = [...WISATA_PROMPTS].sort(() => 0.5 - Math.random());
+    const shuffledItinerary = [...ITINERARY_PROMPTS].sort(() => 0.5 - Math.random());
+    const shuffledApp = [...APP_PROMPTS].sort(() => 0.5 - Math.random());
+
+    // Susun urutan: 1. Wisata, 2. Itinerary, 3. Aplikasi, 4-6. Campuran (Wisata & Aplikasi)
+    setRandomPrompts([
+      shuffledWisata[0],
+      shuffledItinerary[0],
+      shuffledApp[0],
+      shuffledWisata[1],
+      shuffledWisata[2],
+      shuffledApp[1]
+    ]);
+  }, []);
 
   const renderFormattedText = (text: string) => {
     return text.split('\n').map((line, i) => {
@@ -87,7 +128,7 @@ const AIChat: React.FC<AIChatProps> = ({ onBack }) => {
           <span className="material-symbols-outlined icon-filled">smart_toy</span>
         </div>
         <div>
-          <h1 className="text-sm font-black text-slate-900 uppercase tracking-tighter">AI Tourism Activator</h1>
+          <h1 className="text-sm font-black text-slate-900 uppercase tracking-tighter">Jelita - AI Tourism Activator</h1>
           <span className="text-[9px] font-bold text-green-500 uppercase tracking-widest flex items-center gap-1">
             <span className="size-1.5 rounded-full bg-green-500 animate-pulse"></span> Online
           </span>
@@ -125,14 +166,7 @@ const AIChat: React.FC<AIChatProps> = ({ onBack }) => {
       <div className="fixed bottom-0 left-0 right-0 md:relative p-4 md:p-6 bg-gradient-to-t from-slate-50 to-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="flex gap-2 overflow-x-auto no-scrollbar mb-3">
-            {[
-              'Buatkan itinerary wisata 1 hari di Ciamis 🗺️',
-              'Apa saja kuliner khas Ciamis yang enak? 🍜',
-              'Ceritakan sejarah Kerajaan Galuh 🏛️',
-              'Rekomendasi wisata alam yang sejuk 🌲',
-              'Oleh-oleh khas Ciamis selain Galendo? 🛍️',
-              'Info tiket masuk Situ Lengkong Panjalu 🎟️'
-            ].map(tag => (
+            {randomPrompts.map(tag => (
               <button key={tag} onClick={() => handleSend(tag)} className="whitespace-nowrap px-4 py-2 rounded-full bg-white border border-slate-200 text-[10px] font-bold text-slate-500 hover:text-primary transition-all shadow-sm">
                 {tag}
               </button>

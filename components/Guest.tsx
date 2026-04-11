@@ -66,7 +66,7 @@ const Guest: React.FC<GuestProps> = ({ onLogin, onRegister }) => {
         <div className="relative z-20 px-6 md:px-12 w-full max-w-7xl mx-auto text-center md:text-left">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-8 shadow-2xl">
             <span className="material-symbols-outlined text-accent text-sm icon-filled animate-pulse">auto_awesome</span>
-            <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-[0.2em]">AI Tourism Activator</span>
+            <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-[0.2em]">Jelita - AI Tourism Activator</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl">
@@ -124,7 +124,7 @@ const Guest: React.FC<GuestProps> = ({ onLogin, onRegister }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {[
-              { icon: 'smart_toy', title: 'AI Activator', desc: 'Asisten cerdas yang merancang rute perjalanan sesuai preferensi pribadimu.', color: 'bg-primary' },
+              { icon: 'smart_toy', title: 'Jelita (AI Activator)', desc: 'Asisten cerdas yang merancang rute perjalanan sesuai preferensi pribadimu.', color: 'bg-primary' },
               { icon: 'trophy', title: 'Gamifikasi Misi', desc: 'Klaim XP dan naikkan level Reputasi Explorer-mu dengan mengunjungi destinasi pilihan.', color: 'bg-accent' },
               { icon: 'map', title: 'Peta Budaya', desc: 'Akses informasi lengkap event, kuliner legendaris, dan situs sejarah dalam satu genggaman.', color: 'bg-secondary' }
             ].map((f, i) => (

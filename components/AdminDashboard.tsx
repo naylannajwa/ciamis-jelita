@@ -20,7 +20,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
   const handleLogoutClick = () => {
     if (window.confirm("Apakah Anda yakin ingin keluar dari Admin Panel?")) {
       onLogout();
-    }
+    } 
   };
 
   const navItems = [
@@ -99,7 +99,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
              </button>
            ))}
         </div>
-      </div>
+      </div> 
 
       {/* Main Content */}
       <main className="flex-1 md:ml-64 p-4 md:p-8 overflow-y-auto">
